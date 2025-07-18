@@ -1,6 +1,6 @@
 # QTRMuxes
 
-Lightweight Arduino library for reading Pololu QTR sensors using one or two CD74HC4067 multiplexers.
+Lightweight Arduino library for reading Analog Pololu QTR sensors using one or two CD74HC4067 multiplexers.
 
 Supports single and dual 16-channel mux setups (up to 32 sensors), sensor calibration, raw and calibrated readings, and line position calculation.
 
