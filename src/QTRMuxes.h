@@ -9,6 +9,11 @@ typedef enum {
     dualMux,
     singleMux
 }QTRModes;
+typedef enum {
+    black,
+    white,
+    detect
+}readModes;
 class QTRMuxes {
 private:
     uint8_t pS0, pS1, pS2, pS3, pSIG, pEN0, pEN1;
@@ -24,7 +29,7 @@ public:
     void readRaw(uint16_t* values,QTRModes mode);
     void readCalibrated(uint16_t* values,QTRModes mode);
     void calibrate(uint8_t samples,QTRModes mode);
-    int readLine(uint16_t* values,QTRModes mode);
+    int readLine(uint16_t* values,readModes readMode,QTRModes mode);
     void readThroughSingleMux(uint16_t* values);
     void readThroughDualMux(uint16_t* values);
     uint16_t getCalibMin(uint8_t index);

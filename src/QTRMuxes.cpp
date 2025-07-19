@@ -115,19 +115,57 @@ void QTRMuxes::calibrate(uint8_t samples,QTRModes mode) {
     }
 }
 
-int QTRMuxes::readLine(uint16_t *sensorValues,QTRModes mode) {
-    readCalibrated(sensorValues, mode);
-    uint32_t avg = 0;
-    uint16_t sum = 0;
-    for (uint8_t i = 0; i < _sensorCount; i++) {
-        uint16_t val = sensorValues[i];
-        if (val > 50) {
-            avg += (uint32_t)val * i * 1000;
-            sum += val;
+int QTRMuxes::readLine(uint16_t *sensorValues,readModes readMode,QTRModes mode) {\
+    if (readMode==black) {
+        readCalibrated(sensorValues, mode);
+        uint32_t avg = 0;
+        uint16_t sum = 0;
+        for (uint8_t i = 0; i < _sensorCount; i++) {
+            uint16_t val = sensorValues[i];
+            if (val > 50) {
+                avg += (uint32_t)val * i * 1000;
+                sum += val;
+            }
+        }return (sum == 0) ? -1 : avg / sum;
+    }if (readMode==white) {
+        readCalibrated(sensorValues, mode);
+        uint32_t avg = 0;
+        uint16_t sum = 0;
+        for (uint8_t i = 0; i < _sensorCount; i++) {
+            uint16_t val = 1000 - sensorValues[i];
+            if (val > 50) {
+                avg += (uint32_t)val * i * 1000;
+                sum += val;
+            }
+        }return (sum == 0) ? -1 : avg / sum;
+    }else {
+        readCalibrated(sensorValues, mode);
+
+        // Step 1: Compute average sensor value
+        uint32_t total = 0;
+        for (uint8_t i = 0; i < _sensorCount; i++) {
+            total += sensorValues[i];
         }
+        uint16_t avgBrightness = total / _sensorCount;
+
+        // Step 2: Auto-detect line color
+        bool whiteLine = (avgBrightness > 500); // >500 = mostly black background, white line
+
+        // Step 3: Line position calculation
+        uint32_t avg = 0;
+        uint16_t sum = 0;
+        for (uint8_t i = 0; i < _sensorCount; i++) {
+            uint16_t val = whiteLine ? (1000 - sensorValues[i]) : sensorValues[i];
+            if (val > 50) {
+                avg += (uint32_t)val * i * 1000;
+                sum += val;
+            }
+        }
+
+        return (sum == 0) ? -1 : avg / sum;
     }
-    return (sum == 0) ? -1 : avg / sum;
-}
+    }
+
 uint16_t QTRMuxes::getCalibMin(uint8_t index) {
     return _calibMin[index];
 }
