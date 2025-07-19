@@ -1,0 +1,30 @@
+{
+  "name": "QTRMuxes",
+  "version": "1.0.2",
+  "description": "Lightweight library for Pololu QTR sensors using CD74HC4067 multiplexers.",
+  "keywords": ["qtr", "qtrsensor", "pololu", "mux", "cd74hc4067", "line follower"],
+  "authors": [
+    {
+      "name": "Youssef Charfi",
+      "email": "youssefcharfi09@pm.me",
+      "url": "https://github.com/ycharfi09",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ycharfi09/QTRMuxes"
+  },
+  "frameworks": ["arduino"],
+  "platforms": [
+    "atmelavr",
+    "teensy",
+    "espressif32",
+    "espressif8266",
+    "ststm32",
+    "raspberrypi",
+    "atmelsam",
+    "nordicnrf52"
+  ],
+  "license": "MIT"
+}
