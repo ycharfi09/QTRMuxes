@@ -1,5 +1,9 @@
 # QTRMuxes
 
+[![arduino-library-badge](https://www.ardu-badge.com/badge/QTRMuxes.svg?)](https://www.ardu-badge.com/QTRMuxes)
+[![PlatformIO Registry](https://badges.registry.platformio.org/packages/ycharfi09/library/QTRMuxes.svg)](https://registry.platformio.org/libraries/ycharfi09/QTRMuxes)
+
+
 Lightweight Arduino library for reading Analog Pololu QTR sensors using one or two CD74HC4067 multiplexers.
 
 Supports single and dual 16-channel mux setups (up to 32 sensors), sensor calibration, raw and calibrated readings, and line position calculation.
