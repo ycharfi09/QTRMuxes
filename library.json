@@ -1,6 +1,6 @@
 {
   "name": "QTRMuxes",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight library for Pololu QTR sensors using CD74HC4067 multiplexers.",
   "keywords": ["qtr", "qtrsensor", "pololu", "mux", "cd74hc4067", "line follower"],
   "authors": [
