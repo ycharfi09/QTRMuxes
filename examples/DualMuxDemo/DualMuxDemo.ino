@@ -30,7 +30,7 @@ void loop() {
     }
     Serial.println();
 
-    int pos = qtr.readLine(sensorValues, dualMux);
+    int pos = qtr.readLine(sensorValues, black,dualMux);
     Serial.print("Line position: ");
     Serial.println(pos);
 

@@ -28,7 +28,7 @@ void loop() {
     }
     Serial.println();
 
-    int pos = qtr.readLine(sensorValues, singleMux);
+    int pos = qtr.readLine(sensorValues, black,singleMux);
     Serial.print("Line position: ");
     Serial.println(pos);
 

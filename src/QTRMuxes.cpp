@@ -115,7 +115,7 @@ void QTRMuxes::calibrate(uint8_t samples,QTRModes mode) {
     }
 }
 
-int QTRMuxes::readLine(uint16_t *sensorValues,readModes readMode,QTRModes mode) {\
+int QTRMuxes::readLine(uint16_t *sensorValues,readModes readMode,QTRModes mode) {
     if (readMode==black) {
         readCalibrated(sensorValues, mode);
         uint32_t avg = 0;
